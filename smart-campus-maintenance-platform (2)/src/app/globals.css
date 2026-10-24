@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", "Arial Black", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --color-ink: #101c26;
+  --color-ink-soft: #46586a;
+  --color-paper: #eef1f3;
+  --color-card: #ffffff;
+  --color-signal: #e85d04;
+  --color-signal-deep: #c74e02;
+  --color-navy: #12283a;
+  --color-navy-soft: #1d3a52;
+  --color-fix: #14804a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* blueprint grid backdrop */
+.grid-paper {
+  background-image:
+    linear-gradient(rgba(18, 40, 58, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 40, 58, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.grid-paper-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* hazard stripe accent */
+.hazard {
+  background: repeating-linear-gradient(
+    -45deg,
+    #e85d04 0 12px,
+    #101c26 12px 24px
+  );
+}
+
+/* ticket stub perforation */
+.perforated {
+  border-left: 2px dashed rgba(16, 28, 38, 0.2);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.animate-blink { animation: blink-dot 1.6s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+
+@keyframes bar-grow {
+  from { width: 0; }
+}
+.animate-bar { animation: bar-grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+::selection {
+  background: #e85d04;
+  color: #fff;
+}
